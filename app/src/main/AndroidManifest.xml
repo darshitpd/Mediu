@@ -29,7 +29,8 @@
             android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
         <activity android:name=".PatientForgetPassword" />
         <activity android:name=".PasswordChange" />
-        <activity android:name=".PatientAccountSettings"></activity>
+        <activity android:name=".PatientAccountSettings" />
+        <activity android:name=".ProfilePicture"></activity>
     </application>
 
 </manifest>

@@ -7,10 +7,12 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -38,6 +40,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import id.zelory.compressor.Compressor;
 
 import static com.theartofdev.edmodo.cropper.CropImage.getActivityResult;
@@ -48,7 +51,7 @@ public class PatientProfile extends AppCompatActivity {
     private FirebaseUser mCurrentUser;
     private StorageReference mImageStorage;
     private Button mSaveButton;
-    private ImageView image_profile;
+    private CircleImageView image_profile;
     private ProgressDialog mProgressDialog;
     private EditText mFirstname, mLastname, mMobile, mAge, mDob, mEmail, mAddress;
     private RadioGroup rg_gender;
@@ -74,7 +77,7 @@ public class PatientProfile extends AppCompatActivity {
         mDob = (EditText)findViewById(R.id.etDob);
         mAddress = (EditText)findViewById(R.id.etAddress);
         mSaveButton = (Button)findViewById(R.id.saveButton);
-        image_profile = (ImageView)findViewById(R.id.image_profile);
+        image_profile = (CircleImageView) findViewById(R.id.image_profile);
         rg_gender = (RadioGroup)findViewById(R.id.radiogroup_gender);
         radiobutton_male = (RadioButton)findViewById(R.id.radiobutton_male);
         radiobutton_female = (RadioButton)findViewById(R.id.radiobutton_female);
@@ -114,7 +117,7 @@ public class PatientProfile extends AppCompatActivity {
                 }
 
                 if(!image.equals("default")) {
-                    Picasso.with(PatientProfile.this).load(thumbnail).placeholder(R.mipmap.ic_launcher).into(image_profile);
+                    Picasso.with(PatientProfile.this).load(thumbnail).placeholder(R.drawable.default_avatar).into(image_profile);
                 }
 
                 mProgressDialog.dismiss();
@@ -178,10 +181,33 @@ public class PatientProfile extends AppCompatActivity {
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                startActivity(intent);
 
-                CropImage.activity()
+                PopupMenu popupMenu= new PopupMenu(PatientProfile.this, image_profile);
+                popupMenu.getMenuInflater().inflate(R.menu.popup_profile_image, popupMenu.getMenu());
+
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.viewimage:
+                                //Code to run when the Create Order item is clicked
+                                startActivity(new Intent(getApplicationContext(), ProfilePicture.class));
+                                return true;
+                            case R.id.changeimage:
+                                // Code to run when the settings item is clicked
+                                CropImage.activity()
                         .setGuidelines(CropImageView.Guidelines.ON)
                         .setAspectRatio(1,1)
                         .start(PatientProfile.this);
+                                return true;
+                        }
+                        return true;
+                    }
+                });
+                popupMenu.show();
+//                CropImage.activity()
+//                        .setGuidelines(CropImageView.Guidelines.ON)
+//                        .setAspectRatio(1,1)
+//                        .start(PatientProfile.this);
             }
         });
 
