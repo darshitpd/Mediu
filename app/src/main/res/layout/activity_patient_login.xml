@@ -70,6 +70,16 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/forgetpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="20dp"
+            android:textColor="#0000ff"
+            android:text="Forgot your password?"
+            android:onClick="forgetpassword"/>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -85,5 +85,10 @@ public class PatientLogin extends AppCompatActivity {
 
     }
 
+    private void forgetpassword(View view){
+        startActivity(new Intent(getApplicationContext(), PatientHome.class));
+
+    }
+
 
 }
