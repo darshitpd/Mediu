@@ -108,6 +108,8 @@ public class PatientRegister extends AppCompatActivity {
                             Toast.makeText(PatientRegister.this, "Authentication Success. Please Login",
                                     Toast.LENGTH_SHORT).show();
                             userProfile();
+                            startActivity(new Intent(getApplicationContext(), PatientProfile.class));
+
                         } else {
                             mProgressDialog.dismiss();
                             Toast.makeText(PatientRegister.this, "Authentication failed. Please try again later",

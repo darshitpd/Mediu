@@ -66,14 +66,12 @@ public class PatientLogin extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d("TESTING", "sign In Successful:" + task.isSuccessful());
 
 // If sign in fails, display a message to the user. If sign in succeeds
 // the auth state listener will be notified and logic to handle the
 // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
-                            Log.w("TESTING", "signInWithEmail:failed", task.getException());
-                            Toast.makeText(PatientLogin.this, "Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PatientLogin.this, "Wrong password", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             Intent i = new Intent(PatientLogin.this, PatientHome.class);
@@ -85,9 +83,8 @@ public class PatientLogin extends AppCompatActivity {
 
     }
 
-    private void forgetpassword(View view){
-        startActivity(new Intent(getApplicationContext(), PatientHome.class));
-
+    public void forgetpassword(View view){
+        startActivity(new Intent(getApplicationContext(), PatientForgetPassword.class));
     }
 
 
