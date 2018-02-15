@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.asus.mediu.PatientHome">
 
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -127,29 +128,6 @@
             android:textAlignment="textStart"
             android:textColor="@android:color/white"
             android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="15dp"
-            android:layout_marginStart="163dp"
-            android:layout_marginTop="120dp"
-            android:text="Yo BITCHES"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/signout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal|center"
-            android:text="Sign Out" />
-        <Button
-            android:id="@+id/openprofile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal|center"
-            android:text="Profile" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
