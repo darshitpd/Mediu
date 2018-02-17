@@ -75,6 +75,7 @@
             android:padding="15dp"
             android:textAlignment="center">
 
+            <!--fetch data and put it next to welcome-->
             <TextView
                 android:id="@+id/welcome"
                 android:layout_width="0dp"
