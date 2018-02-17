@@ -123,4 +123,11 @@
             android:textColor="@android:color/white"
             android:textSize="15sp" />
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/userlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="userlist"
+        android:onClick="openuserlist"/>
+
+</LinearLayout>

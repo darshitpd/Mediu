@@ -56,6 +56,10 @@ public class PatientHome extends AppCompatActivity {
     public void myhealth(View view) {
         Intent intent = new Intent(this, MyHealth.class);
         startActivity(intent);    }
+    public void openuserlist(View view){
+        Intent intent = new Intent(this, UsersList.class);
+        startActivity(intent);
+    }
 
 
 

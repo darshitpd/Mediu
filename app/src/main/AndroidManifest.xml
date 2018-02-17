@@ -13,7 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
@@ -26,67 +25,49 @@
             </intent-filter>
         </activity>
         <activity android:name=".PatientHome" />
-
-
         <activity
             android:name=".PatientRegister"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".PatientLogin"
-            android:parentActivityName=".MainActivity"
-        />
-
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".PatientProfile"
-            android:parentActivityName=".PatientAccountSettings"
-            />
-
+            android:parentActivityName=".PatientAccountSettings" />
         <activity
             android:name=".PatientForgetPassword"
-                android:parentActivityName=".PatientLogin"
-        />
+            android:parentActivityName=".PatientLogin" />
         <activity
             android:name=".PasswordChange"
-            android:parentActivityName=".PatientAccountSettings"
-        />
+            android:parentActivityName=".PatientAccountSettings" />
         <activity
             android:name=".PatientAccountSettings"
-                android:parentActivityName=".PatientHome"
-        />
-
+            android:parentActivityName=".PatientHome" />
         <activity
             android:name=".ProfilePicture"
-            android:parentActivityName=".PatientProfile"
-        />
+            android:parentActivityName=".PatientProfile" />
         <activity
             android:name=".Appointments"
-            android:parentActivityName=".PatientHome"
-            />
+            android:parentActivityName=".PatientHome" />
         <activity
             android:name=".HealthFeed"
-            android:parentActivityName=".PatientHome"
-            />
+            android:parentActivityName=".PatientHome" />
         <activity
             android:name=".Chat"
-            android:parentActivityName=".PatientHome"
-            />
+            android:parentActivityName=".PatientHome" />
         <activity
             android:name=".MyHealth"
-            android:parentActivityName=".PatientHome"
-        />
+            android:parentActivityName=".PatientHome" />
         <activity
             android:name=".History"
-            android:parentActivityName=".MyHealth"
-        />
+            android:parentActivityName=".MyHealth" />
         <activity
             android:name=".Documents"
-            android:parentActivityName=".MyHealth"
-        />
+            android:parentActivityName=".MyHealth" />
         <activity
             android:name=".LabTest"
-            android:parentActivityName=".MyHealth"
-        />
-
+            android:parentActivityName=".MyHealth" />
+        <activity android:name=".UsersList"></activity>
     </application>
 
 </manifest>
