@@ -178,6 +178,11 @@
         android:id="@+id/saveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="#08ad60"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_margin="15dp"
         android:text="Save" />
 
 </LinearLayout>

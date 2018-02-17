@@ -45,14 +45,29 @@ public class PatientHome extends AppCompatActivity {
 
 
     }
+    public void appointments(View view) {
+        Intent intent = new Intent(this, Appointments.class);
+        startActivity(intent);    }
+
+    public void healthfeed(View view) {
+        Intent intent = new Intent(this, HealthFeed.class);
+        startActivity(intent);    }
+
+    public void myhealth(View view) {
+        Intent intent = new Intent(this, MyHealth.class);
+        startActivity(intent);    }
+
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_chat:
                 //Code to run when the Create Order item is clicked
-
-
+                Intent intent = new Intent(this, Chat.class);
+                startActivity(intent);
                 return true;
+
             case R.id.action_accountsettings:
                 // Code to run when the settings item is clicked
                 Intent i = new Intent(this, PatientAccountSettings.class);

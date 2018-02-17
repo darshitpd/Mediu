@@ -13,6 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,16 +26,67 @@
             </intent-filter>
         </activity>
         <activity android:name=".PatientHome" />
-        <activity android:name=".PatientRegister" />
-        <activity android:name=".PatientLogin" />
-        <activity android:name=".PatientProfile" />
+
+
         <activity
-            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
-        <activity android:name=".PatientForgetPassword" />
-        <activity android:name=".PasswordChange" />
-        <activity android:name=".PatientAccountSettings" />
-        <activity android:name=".ProfilePicture"></activity>
+            android:name=".PatientRegister"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".PatientLogin"
+            android:parentActivityName=".MainActivity"
+        />
+
+        <activity
+            android:name=".PatientProfile"
+            android:parentActivityName=".PatientAccountSettings"
+            />
+
+        <activity
+            android:name=".PatientForgetPassword"
+                android:parentActivityName=".PatientLogin"
+        />
+        <activity
+            android:name=".PasswordChange"
+            android:parentActivityName=".PatientAccountSettings"
+        />
+        <activity
+            android:name=".PatientAccountSettings"
+                android:parentActivityName=".PatientHome"
+        />
+
+        <activity
+            android:name=".ProfilePicture"
+            android:parentActivityName=".PatientProfile"
+        />
+        <activity
+            android:name=".Appointments"
+            android:parentActivityName=".PatientHome"
+            />
+        <activity
+            android:name=".HealthFeed"
+            android:parentActivityName=".PatientHome"
+            />
+        <activity
+            android:name=".Chat"
+            android:parentActivityName=".PatientHome"
+            />
+        <activity
+            android:name=".MyHealth"
+            android:parentActivityName=".PatientHome"
+        />
+        <activity
+            android:name=".History"
+            android:parentActivityName=".MyHealth"
+        />
+        <activity
+            android:name=".Documents"
+            android:parentActivityName=".MyHealth"
+        />
+        <activity
+            android:name=".LabTest"
+            android:parentActivityName=".MyHealth"
+        />
+
     </application>
 
 </manifest>

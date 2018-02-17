@@ -23,6 +23,9 @@ public class ProfilePicture extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_picture);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         image_profile = (ImageView)findViewById(R.id.profilepicture);
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         String current_uid = mCurrentUser.getUid();

@@ -143,7 +143,8 @@ public class PatientRegister extends AppCompatActivity {
     }
 
     public void opensigninpage(View view){
-        startActivity(new Intent(getApplicationContext(), PatientLogin.class));
+        Intent intent = new Intent(this, PatientLogin.class);
+        startActivity(intent);
 
     }
 
