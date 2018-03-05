@@ -67,7 +67,8 @@
         <activity
             android:name=".LabTest"
             android:parentActivityName=".MyHealth" />
-        <activity android:name=".UsersList"></activity>
+        <activity android:name=".UsersList" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>

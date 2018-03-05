@@ -261,6 +261,7 @@ public class PatientProfile extends AppCompatActivity {
 
                                     String thumb_download_url = thumb_task.getResult().getDownloadUrl().toString();
 
+
                                     if(thumb_task.isSuccessful()){
 
                                         Map update_hashmap = new HashMap<>();
