@@ -60,6 +60,10 @@ public class PatientHome extends AppCompatActivity {
         Intent intent = new Intent(this, UsersList.class);
         startActivity(intent);
     }
+    public void openconnecteduserslist(View view){
+        Intent intent = new Intent(this, ConnectedDoctorList.class);
+        startActivity(intent);
+    }
 
 
 

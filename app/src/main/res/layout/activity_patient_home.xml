@@ -129,5 +129,10 @@
         android:layout_height="wrap_content"
         android:text="userlist"
         android:onClick="openuserlist"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Connected Users"
+        android:onClick="openconnecteduserslist"/>
 
 </LinearLayout>
