@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -32,6 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference mUsersDatabase;
     private DatabaseReference mUsersInfoDatabase;
     private DatabaseReference mConnectReqDatabase;
+    private DatabaseReference mNotificationDatabase;
 
     private FirebaseUser mCurrent_user;
 
@@ -47,6 +51,8 @@ public class ProfileActivity extends AppCompatActivity {
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Doctor_Users").child(user_id);
         mUsersInfoDatabase = FirebaseDatabase.getInstance().getReference().child("Patient_Users");
         mConnectReqDatabase = FirebaseDatabase.getInstance().getReference().child("Connect_Req");
+        mNotificationDatabase = FirebaseDatabase.getInstance().getReference().child("Notifications");
+
         mCurrent_user= FirebaseAuth.getInstance().getCurrentUser();
 
         mProfileImage = (ImageView) findViewById(R.id.profile_image);
@@ -141,6 +147,17 @@ public class ProfileActivity extends AppCompatActivity {
 
                                                 @Override
                                                 public void onCancelled(DatabaseError databaseError) {
+
+                                                }
+                                            });
+
+                                            HashMap<String,String> notificationData = new HashMap<>();
+                                            notificationData.put("from",mCurrent_user.getUid());
+                                            notificationData.put("type","request");
+
+                                            mNotificationDatabase.child(user_id).push().setValue(notificationData).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
 
                                                 }
                                             });
