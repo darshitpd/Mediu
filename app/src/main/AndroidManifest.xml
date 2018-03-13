@@ -53,9 +53,6 @@
             android:name=".HealthFeed"
             android:parentActivityName=".PatientHome" />
         <activity
-            android:name=".Chat"
-            android:parentActivityName=".PatientHome" />
-        <activity
             android:name=".MyHealth"
             android:parentActivityName=".PatientHome" />
         <activity
@@ -70,7 +67,8 @@
         <activity android:name=".UsersList" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ConnectedDoctorList" />
-        <activity android:name=".ConnectedDoctorProfile"></activity>
+        <activity android:name=".ConnectedDoctorProfile" />
+        <activity android:name=".Chat"></activity>
     </application>
 
 </manifest>

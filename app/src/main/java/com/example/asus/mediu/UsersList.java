@@ -47,8 +47,8 @@ public class UsersList extends AppCompatActivity {
 
                 usersViewHolder.setDisplayName(users.getName());
                 usersViewHolder.setLastName(users.getLastname());
-
                 usersViewHolder.setUserImage(users.getThumb_image(), getApplicationContext());
+
                 final String user_id = getRef(i).getKey();
 
                 usersViewHolder.mView.setOnClickListener(new View.OnClickListener() {
