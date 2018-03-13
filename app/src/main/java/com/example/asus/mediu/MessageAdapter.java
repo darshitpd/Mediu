@@ -54,7 +54,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
 
         public TextView messaageText;
-        public CircleImageView profileImage;
+//        public CircleImageView profileImage;
 //        public TextView timeText;
         public ImageView messageImage;
 
@@ -63,7 +63,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
 
             messaageText = (TextView) itemView.findViewById(R.id.message_text_layout);
-            profileImage = (CircleImageView) itemView.findViewById(R.id.message_profile_layout);
+//            profileImage = (CircleImageView) itemView.findViewById(R.id.message_profile_layout);
 //            timeText = (TextView) itemView.findViewById(R.id.message_item_time);
             messageImage = (ImageView) itemView.findViewById(R.id.message_image_layout);
 
@@ -85,7 +85,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
         if (from_user.equals(current_user_id)){
 
-            viewHolder.messaageText.setBackgroundResource(R.drawable.message_text_background);
 
             viewHolder.messaageText.setBackgroundColor(Color.WHITE);
                 viewHolder.messaageText.setTextColor(Color.BLACK);
@@ -93,12 +92,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) viewHolder.messaageText.getLayoutParams();
             lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             viewHolder.messaageText.setLayoutParams(lp);
-            viewHolder.profileImage.setVisibility(View.INVISIBLE);
+
+            viewHolder.messaageText.setBackgroundResource(R.drawable.message_user_background);
+
 
         } else
         {
-
-            viewHolder.profileImage.setVisibility(View.INVISIBLE);
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) viewHolder.messaageText.getLayoutParams();
+            lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            viewHolder.messaageText.setLayoutParams(lp);
             viewHolder.messaageText.setBackgroundResource(R.drawable.message_text_background);
             viewHolder.messaageText.setTextColor(Color.WHITE);
 
