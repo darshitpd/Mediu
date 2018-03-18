@@ -28,7 +28,6 @@ public class PatientLogin extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private EditText email, password;
     private Button signin;
-    private DatabaseReference mDatabase;
     private ProgressDialog mProgressDialog;
 
     @Override
@@ -38,7 +37,7 @@ public class PatientLogin extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAuth = FirebaseAuth.getInstance();
-
+        mProgressDialog = new ProgressDialog(this);
         signin= (Button)findViewById(R.id.signin);
         email= (EditText)findViewById(R.id.etEmail);
         password= (EditText)findViewById(R.id.etPassword);
@@ -53,7 +52,18 @@ public class PatientLogin extends AppCompatActivity {
             public void onClick(View view) {
                 String getemail = email.getText().toString().trim();
                 String getpassword = password.getText().toString().trim();
-                callsignin(getemail,getpassword);
+                if(!TextUtils.isEmpty(getemail) && !TextUtils.isEmpty(getpassword))
+                {
+                    mProgressDialog.setTitle("Signing In");
+                    mProgressDialog.setMessage("Please wait while we check your credentials");
+                    mProgressDialog.setCanceledOnTouchOutside(false);
+                    mProgressDialog.show();
+                    callsignin(getemail,getpassword);
+                }
+                else {
+                    Toast.makeText(PatientLogin.this, "Please enter all the details.",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -72,7 +82,7 @@ public class PatientLogin extends AppCompatActivity {
 // the auth state listener will be notified and logic to handle the
 // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
-                            Toast.makeText(PatientLogin.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PatientLogin.this, "Wrong email or password", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             Intent i = new Intent(PatientLogin.this, PatientHome.class);

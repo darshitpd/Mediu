@@ -1,20 +1,27 @@
 package com.example.asus.mediu;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +43,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -53,9 +61,11 @@ public class PatientProfile extends AppCompatActivity {
     private Button mSaveButton;
     private CircleImageView image_profile;
     private ProgressDialog mProgressDialog;
-    private EditText mFirstname, mLastname, mMobile, mAge, mDob, mEmail, mAddress;
+    private EditText mFirstname, mLastname, mMobile, mAge, mDob, mAddress;
+    private TextView mEmail;
     private RadioGroup rg_gender;
     private RadioButton radioButton, radiobutton_male, radiobutton_female;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
 
     @Override
@@ -75,7 +85,7 @@ public class PatientProfile extends AppCompatActivity {
         mLastname = (EditText)findViewById(R.id.etLastname);
         mAge = (EditText)findViewById(R.id.etAge);
         mMobile = (EditText)findViewById(R.id.etMobile);
-        mEmail = (EditText)findViewById(R.id.etEmail);
+        mEmail = (TextView) findViewById(R.id.tvEmail);
         mDob = (EditText)findViewById(R.id.etDob);
         mAddress = (EditText)findViewById(R.id.etAddress);
         mSaveButton = (Button)findViewById(R.id.saveButton);
@@ -131,6 +141,32 @@ public class PatientProfile extends AppCompatActivity {
             }
         });
 
+        mDob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        PatientProfile.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener,
+                        year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                String date = month + "/" + day + "/" + year;
+                mDob.setText(date);
+                mUserDatabase.child("dob").setValue(date);
+            }
+        };
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,7 +176,6 @@ public class PatientProfile extends AppCompatActivity {
                 mProgressDialog.show();
                 String firstname=  mFirstname.getEditableText().toString();
                 String lastname = mLastname.getEditableText().toString();
-                String email = mEmail.getEditableText().toString();
                 String mobile = mMobile.getEditableText().toString();
                 String dob = mDob.getEditableText().toString();
                 String address = mAddress.getEditableText().toString();
@@ -148,27 +183,34 @@ public class PatientProfile extends AppCompatActivity {
                 radioButton = findViewById(rg_gender.getCheckedRadioButtonId());
                 String gender= radioButton.getText().toString();
 
-                mUserDatabase.child("firstname").setValue(firstname);
-                mUserDatabase.child("lastname").setValue(lastname);
-                mUserDatabase.child("email").setValue(email);
-                mUserDatabase.child("mobile").setValue(mobile);
-                mUserDatabase.child("dob").setValue(dob);
-                mUserDatabase.child("address").setValue(address);
-                mUserDatabase.child("gender").setValue(gender);
-                mUserDatabase.child("age").setValue(age).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            mProgressDialog.dismiss();
-                        }
-                        else {
-                            mProgressDialog.dismiss();
-                            Toast.makeText(PatientProfile.this, "Error in saving data.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
+                if(!TextUtils.isEmpty(firstname) && !TextUtils.isEmpty(lastname) && !TextUtils.isEmpty(mobile) && !TextUtils.isEmpty(dob)
+                        && !TextUtils.isEmpty(address) && !TextUtils.isEmpty(gender) && !TextUtils.isEmpty(age)) {
+                    mUserDatabase.child("firstname").setValue(firstname);
+                    mUserDatabase.child("lastname").setValue(lastname);
+                    if(mobile.length()==10){
+                    mUserDatabase.child("mobile").setValue(mobile);}
+                    else {
+                        Toast.makeText(PatientProfile.this, "Please enter valid mobile number", Toast.LENGTH_SHORT).show();
                     }
-                });
-
+                    mUserDatabase.child("dob").setValue(dob);
+                    mUserDatabase.child("address").setValue(address);
+                    mUserDatabase.child("gender").setValue(gender);
+                    mUserDatabase.child("age").setValue(age).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                mProgressDialog.dismiss();
+                            } else {
+                                mProgressDialog.dismiss();
+                                Toast.makeText(PatientProfile.this, "Error in saving data.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+                else {
+                    Toast.makeText(PatientProfile.this, "Please fill up all the details", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

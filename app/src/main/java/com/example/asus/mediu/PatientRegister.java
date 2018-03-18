@@ -1,5 +1,6 @@
 package com.example.asus.mediu;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -57,7 +58,7 @@ public class PatientRegister extends AppCompatActivity {
                 String getemail = email.getText().toString().trim();
                 String getpassword = password.getText().toString().trim();
 
-                if(!TextUtils.isEmpty(getfirstname) || !TextUtils.isEmpty(getlastname) || !TextUtils.isEmpty(getemail) || !TextUtils.isEmpty(getpassword))
+                if(!TextUtils.isEmpty(getfirstname) && !TextUtils.isEmpty(getlastname) && !TextUtils.isEmpty(getemail) && !TextUtils.isEmpty(getpassword))
                 {
                     mProgressDialog.setTitle("Registering User");
                     mProgressDialog.setMessage("Please wait while we check your credentials");
@@ -66,7 +67,7 @@ public class PatientRegister extends AppCompatActivity {
                     callregister(getfirstname, getlastname, getemail,getpassword);
                 }
                 else {
-                    Toast.makeText(PatientRegister.this, "Please fill all the details.",
+                    Toast.makeText(PatientRegister.this, "Please enter all the details.",
                             Toast.LENGTH_SHORT).show();
                 }
 
@@ -105,14 +106,14 @@ public class PatientRegister extends AppCompatActivity {
 
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(PatientRegister.this, "Authentication Success. Please Login",
+                            Toast.makeText(PatientRegister.this, "Registration Success.",
                                     Toast.LENGTH_SHORT).show();
                             userProfile();
                             startActivity(new Intent(getApplicationContext(), PatientProfile.class));
 
                         } else {
                             mProgressDialog.dismiss();
-                            Toast.makeText(PatientRegister.this, "Authentication failed. Please try again later",
+                            Toast.makeText(PatientRegister.this, "Registration failed. Please try again later",
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -147,7 +148,6 @@ public class PatientRegister extends AppCompatActivity {
         startActivity(intent);
 
     }
-
     }
 
 
