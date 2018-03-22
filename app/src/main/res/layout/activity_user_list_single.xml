@@ -14,6 +14,7 @@
         android:layout_marginTop="15dp"
         android:src="@drawable/default_avatar" />
 
+
     <TextView
         android:id="@+id/user_single_name"
         android:layout_width="wrap_content"
@@ -22,6 +23,7 @@
         android:layout_marginStart="20dp"
         android:layout_toEndOf="@+id/user_single_image"
         android:text="Display Name"
+        android:layout_margin="5dp"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 
@@ -31,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/user_single_name"
         android:layout_centerVertical="true"
+        android:layout_margin="5dp"
         android:text="User Last Name"
         android:textColor="@android:color/black"
         android:textSize="18sp" />

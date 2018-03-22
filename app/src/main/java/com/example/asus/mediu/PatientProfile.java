@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,8 +62,8 @@ public class PatientProfile extends AppCompatActivity {
     private Button mSaveButton;
     private CircleImageView image_profile;
     private ProgressDialog mProgressDialog;
-    private EditText mFirstname, mLastname, mMobile, mAge, mDob, mAddress;
-    private TextView mEmail;
+    private EditText mFirstname, mLastname, mMobile, mAge, mAddress;
+    private TextView mEmail, mDob;
     private RadioGroup rg_gender;
     private RadioButton radioButton, radiobutton_male, radiobutton_female;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -86,7 +87,7 @@ public class PatientProfile extends AppCompatActivity {
         mAge = (EditText)findViewById(R.id.etAge);
         mMobile = (EditText)findViewById(R.id.etMobile);
         mEmail = (TextView) findViewById(R.id.tvEmail);
-        mDob = (EditText)findViewById(R.id.etDob);
+        mDob = (TextView) findViewById(R.id.etDob);
         mAddress = (EditText)findViewById(R.id.etAddress);
         mSaveButton = (Button)findViewById(R.id.saveButton);
         image_profile = (CircleImageView) findViewById(R.id.image_profile);
@@ -177,13 +178,12 @@ public class PatientProfile extends AppCompatActivity {
                 String firstname=  mFirstname.getEditableText().toString();
                 String lastname = mLastname.getEditableText().toString();
                 String mobile = mMobile.getEditableText().toString();
-                String dob = mDob.getEditableText().toString();
                 String address = mAddress.getEditableText().toString();
                 String age = mAge.getEditableText().toString();
                 radioButton = findViewById(rg_gender.getCheckedRadioButtonId());
                 String gender= radioButton.getText().toString();
 
-                if(!TextUtils.isEmpty(firstname) && !TextUtils.isEmpty(lastname) && !TextUtils.isEmpty(mobile) && !TextUtils.isEmpty(dob)
+                if(!TextUtils.isEmpty(firstname) && !TextUtils.isEmpty(lastname) && !TextUtils.isEmpty(mobile)
                         && !TextUtils.isEmpty(address) && !TextUtils.isEmpty(gender) && !TextUtils.isEmpty(age)) {
                     mUserDatabase.child("firstname").setValue(firstname);
                     mUserDatabase.child("lastname").setValue(lastname);
@@ -192,8 +192,12 @@ public class PatientProfile extends AppCompatActivity {
                     else {
                         Toast.makeText(PatientProfile.this, "Please enter valid mobile number", Toast.LENGTH_SHORT).show();
                     }
-                    mUserDatabase.child("dob").setValue(dob);
-                    mUserDatabase.child("address").setValue(address);
+
+                    if (address.length() > 20){
+                        mUserDatabase.child("address").setValue(address);
+                    }else {
+                        Toast.makeText(PatientProfile.this, "Please enter a valid address", Toast.LENGTH_SHORT).show();
+                    }
                     mUserDatabase.child("gender").setValue(gender);
                     mUserDatabase.child("age").setValue(age).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

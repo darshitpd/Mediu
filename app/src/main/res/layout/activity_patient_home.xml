@@ -127,12 +127,12 @@
         android:id="@+id/userlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="userlist"
+        android:text="Doctors list"
         android:onClick="openuserlist"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Connected Users"
+        android:text="Connected Doctors"
         android:onClick="openconnecteduserslist"/>
 
 </LinearLayout>

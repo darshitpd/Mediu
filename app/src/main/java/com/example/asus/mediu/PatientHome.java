@@ -52,7 +52,7 @@ public class PatientHome extends AppCompatActivity {
         startActivity(intent);    }
 
     public void healthfeed(View view) {
-        Intent intent = new Intent(this, HealthFeed.class);
+        Intent intent = new Intent(this, DisplayBlogsActivity.class);
         startActivity(intent);    }
 
     public void myhealth(View view) {

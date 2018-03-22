@@ -18,11 +18,7 @@
             android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
 
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".PatientHome" />
         <activity
@@ -68,7 +64,16 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ConnectedDoctorList" />
         <activity android:name=".ConnectedDoctorProfile" />
-        <activity android:name=".Chat"></activity>
+        <activity android:name=".Chat" />
+        <activity android:name=".DisplayBlogsActivity" />
+        <activity android:name=".SingleBlogPostFull" />
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
