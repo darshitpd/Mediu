@@ -37,29 +37,64 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_margin="80sp">
+            android:layout_margin="30sp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:padding="20sp"
                 android:src="@drawable/file" />
+            <!--<TextView-->
+                <!--android:id="@+id/editText2"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:ems="10"-->
+                <!--android:padding="15sp"-->
+                <!--android:background="@drawable/outline"-->
+                <!--android:text="date: Click Here!"-->
+                <!--/>-->
 
-            <TextView
+            <EditText
+                android:id="@+id/editTextFileName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="22sp"
-                android:textAlignment="center"
-                android:text="@string/nod" />
-
+                android:layout_centerVertical="true"
+                android:hint="Enter a name for your file"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
             <Button
-                android:layout_width="236dp"
+                android:id="@+id/buttonUploadFile"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#08ad60"
-                android:padding="15sp"
                 android:text="@string/upload"
                 android:textAlignment="center"
                 android:textColor="@android:color/white" />
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/textViewStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="No file selected"
+                android:textAlignment="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+            <TextView
+                android:id="@+id/textViewUploads"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View Uploads"
+                android:textAlignment="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textColor="@color/colorPrimary" />
 
         </LinearLayout>
     </LinearLayout>
