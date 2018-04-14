@@ -51,9 +51,6 @@ public class PatientHome extends AppCompatActivity {
         }
 
 //Fetch the Display name of current User
-        FirebaseUser user = mAuth.getCurrentUser();
-
-
 
         mUserDatabase.addValueEventListener(new ValueEventListener() {
             @Override
