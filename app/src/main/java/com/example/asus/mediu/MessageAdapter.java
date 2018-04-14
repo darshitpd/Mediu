@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -119,6 +120,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
             Picasso.with(viewHolder.messageImage.getContext()).load(c.getMessage())
                     .placeholder(R.drawable.default_avatar).into(viewHolder.messageImage);
+
 
         }
 

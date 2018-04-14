@@ -29,6 +29,11 @@ public class ConnectedDoctorList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connected_doctor_list);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Connected Doctors");
+
+
+
         mCurrent_user= FirebaseAuth.getInstance().getCurrentUser();
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("ConnectedList").child(mCurrent_user.getUid());
 

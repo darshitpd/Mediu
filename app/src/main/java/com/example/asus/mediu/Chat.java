@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -175,6 +176,8 @@ public class Chat extends AppCompatActivity {
                     galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
 
                     startActivityForResult(Intent.createChooser(galleryIntent, "SELECT IMAGE"), GALLERY_PICK);
+
+                    Toast.makeText(Chat.this, "Image Sent", Toast.LENGTH_SHORT).show();
 
                 }
             });

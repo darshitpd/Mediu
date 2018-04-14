@@ -23,7 +23,7 @@ import com.squareup.picasso.Picasso;
 public class ConnectedDoctorProfile extends AppCompatActivity {
 
     private ImageView mProfileImage;
-    private TextView mProfileName;
+    private TextView mProfileName,mSpecialization,mExp,mClinicAddress;
     private Button mProfileDeclineReqBtn;
 
     private DatabaseReference mUsersDatabase;
@@ -36,6 +36,8 @@ public class ConnectedDoctorProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connected_doctor_profile);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         final String user_id = getIntent().getStringExtra("user_id");
 
@@ -45,6 +47,9 @@ public class ConnectedDoctorProfile extends AppCompatActivity {
 
         mProfileImage = (ImageView) findViewById(R.id.profile_image);
         mProfileName = (TextView) findViewById(R.id.profile_displayName);
+        mSpecialization = (TextView)findViewById(R.id.profile_specialization);
+        mExp  = (TextView)findViewById(R.id.profile_exp);
+        mClinicAddress = (TextView)findViewById(R.id.profile_clinc_address);
         mProfileDeclineReqBtn=(Button)findViewById(R.id.profile_decline_req_btn);
 
         mCurrent_state= 3;
@@ -56,7 +61,15 @@ public class ConnectedDoctorProfile extends AppCompatActivity {
                 String display_name = firstname+" "+lastname;
                 String image = dataSnapshot.child("image").getValue().toString();
 
+                String specialization = dataSnapshot.child("specialist").getValue().toString();
+                String exp = dataSnapshot.child("experience").getValue().toString();
+                String clinicAddress = dataSnapshot.child("address").getValue().toString();
+
                 mProfileName.setText(display_name);
+
+                mSpecialization.setText(specialization);
+                mExp.setText(exp);
+                mClinicAddress.setText(clinicAddress);
 
                 Picasso.with(ConnectedDoctorProfile.this).load(image).placeholder(R.drawable.default_avatar).into(mProfileImage);
             }

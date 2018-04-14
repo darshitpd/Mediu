@@ -12,6 +12,8 @@ public class MyHealth extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_health);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("My Health");
+
     }
 
     public void history(View view) {

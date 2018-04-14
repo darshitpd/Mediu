@@ -14,9 +14,18 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class PatientHome extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    private DatabaseReference mUserDatabase;
+    private FirebaseUser mCurrentUser;
+
+    private TextView mFirstname;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,7 +33,13 @@ public class PatientHome extends AppCompatActivity {
         setContentView(R.layout.activity_patient_home);
 
         mAuth = FirebaseAuth.getInstance(); // important Call
+        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String current_uid = mCurrentUser.getUid();
 
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Patient_Users").child(current_uid);
+
+
+        mFirstname = (TextView) findViewById(R.id.firstname);
 
 
 //Again check if the user is Already Logged in or Not
@@ -37,6 +52,22 @@ public class PatientHome extends AppCompatActivity {
 
 //Fetch the Display name of current User
         FirebaseUser user = mAuth.getCurrentUser();
+
+
+
+        mUserDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String firstname= dataSnapshot.child("firstname").getValue().toString();
+
+                mFirstname.setText(firstname);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
     @Override
@@ -57,13 +88,12 @@ public class PatientHome extends AppCompatActivity {
 
     public void myhealth(View view) {
         Intent intent = new Intent(this, MyHealth.class);
-        startActivity(intent);    }
-    public void openuserlist(View view){
-        Intent intent = new Intent(this, UsersList.class);
         startActivity(intent);
     }
-    public void openconnecteduserslist(View view){
-        Intent intent = new Intent(this, ConnectedDoctorList.class);
+
+    public void openconnectionsettings (View view){
+
+        Intent intent = new Intent(this, patient_connect_doctor.class);
         startActivity(intent);
     }
 

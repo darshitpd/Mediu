@@ -36,6 +36,8 @@ public class PatientRegister extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_register);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         mAuth = FirebaseAuth.getInstance();
         mProgressDialog = new ProgressDialog(this);

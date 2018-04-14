@@ -29,20 +29,46 @@
 
 
     <TextView
-        android:id="@+id/profile_specialist"
+        android:id="@+id/profile_specialization"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_displayName"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Specialist"
+        android:layout_marginTop="26dp"
+        android:text="Specialization"
         android:textColor="@android:color/white"
-        android:textSize="16sp" />
+        android:textSize="24sp" />
+
+
+    <TextView
+        android:id="@+id/profile_exp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_specialization"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="Years of Experience"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/profile_clinc_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_exp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="Clinic Address"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+
 
     <Button
         android:id="@+id/profile_send_req_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profile_specialist"
+        android:layout_below="@+id/profile_clinc_address"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="115dp"
         android:backgroundTint="@color/colorAccent"

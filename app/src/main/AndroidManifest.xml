@@ -17,7 +17,7 @@
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".PatientHome" />
         <activity
             android:name=".PatientRegister"
@@ -44,9 +44,6 @@
             android:name=".Appointments"
             android:parentActivityName=".PatientHome" />
         <activity
-            android:name=".HealthFeed"
-            android:parentActivityName=".PatientHome" />
-        <activity
             android:name=".MyHealth"
             android:parentActivityName=".PatientHome" />
         <activity
@@ -58,13 +55,28 @@
         <activity
             android:name=".LabTest"
             android:parentActivityName=".MyHealth" />
-        <activity android:name=".UsersList" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".ConnectedDoctorList" />
-        <activity android:name=".ConnectedDoctorProfile" />
-        <activity android:name=".Chat" />
-        <activity android:name=".DisplayBlogsActivity" />
-        <activity android:name=".SingleBlogPostFull" />
+
+        <activity
+            android:name=".UsersList"
+            android:parentActivityName=".patient_connect_doctor" />
+        <activity
+            android:name=".ProfileActivity"
+            android:parentActivityName=".UsersList" />
+        <activity
+            android:name=".ConnectedDoctorList"
+            android:parentActivityName=".patient_connect_doctor"  />
+        <activity
+            android:name=".ConnectedDoctorProfile"
+            android:parentActivityName=".ConnectedDoctorList"  />
+        <activity
+            android:name=".Chat"
+            android:parentActivityName=".ConnectedDoctorList" />
+        <activity
+            android:name=".DisplayBlogsActivity"
+            android:parentActivityName=".PatientHome" />
+        <activity
+            android:name=".SingleBlogPostFull"
+            android:parentActivityName=".DisplayBlogsActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -72,7 +84,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ViewUploadsActivity"></activity>
+        <activity
+            android:name=".ViewUploadsActivity"
+            android:parentActivityName=".Documents"/>
+        <activity
+            android:name=".patient_connect_doctor"
+            android:parentActivityName=".PatientHome" />
     </application>
 
 </manifest>

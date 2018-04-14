@@ -24,6 +24,8 @@ public class PatientForgetPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_forget_password);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Forgot Password");
+
 
         email= (EditText)findViewById(R.id.etEmail);
         submit =(Button)findViewById(R.id.submit);

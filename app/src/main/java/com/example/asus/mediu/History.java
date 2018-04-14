@@ -12,6 +12,8 @@ public class History extends AppCompatActivity {
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("History");
+
     }
 }
 

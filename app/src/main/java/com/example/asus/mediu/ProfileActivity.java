@@ -29,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     private ImageView mProfileImage;
-    private TextView mProfileName, mProfileSpecialist;
+    private TextView mProfileName, mSpecialization,mExp,mClinicAddress;
     private Button mProfileSendReqBtn;
 
     private DatabaseReference mUsersDatabase;
@@ -46,6 +46,9 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         final String user_id = getIntent().getStringExtra("user_id");
 
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Doctor_Users").child(user_id);
@@ -57,7 +60,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         mProfileImage = (ImageView) findViewById(R.id.profile_image);
         mProfileName = (TextView) findViewById(R.id.profile_displayName);
-        mProfileSpecialist = (TextView) findViewById(R.id.profile_specialist);
+        mSpecialization = (TextView)findViewById(R.id.profile_specialization);
+        mExp  = (TextView)findViewById(R.id.profile_exp);
+        mClinicAddress = (TextView)findViewById(R.id.profile_clinc_address);
         mProfileSendReqBtn = (Button) findViewById(R.id.profile_send_req_btn);
         mCurrent_state = 0;
 
@@ -67,11 +72,16 @@ public class ProfileActivity extends AppCompatActivity {
                 String firstname = dataSnapshot.child("firstname").getValue().toString();
                 String lastname = dataSnapshot.child("lastname").getValue().toString();
                 String display_name = firstname+" "+lastname;
-                String specialist = dataSnapshot.child("specialist").getValue().toString();
+                String specialization = dataSnapshot.child("specialist").getValue().toString();
+                String exp = dataSnapshot.child("experience").getValue().toString();
+                String clinicAddress = dataSnapshot.child("address").getValue().toString();
                 String image = dataSnapshot.child("image").getValue().toString();
 
                 mProfileName.setText(display_name);
-                mProfileSpecialist.setText(specialist);
+
+                mSpecialization.setText(specialization);
+                mExp.setText(exp);
+                mClinicAddress.setText(clinicAddress);
 
                 Picasso.with(ProfileActivity.this).load(image).placeholder(R.drawable.default_avatar).into(mProfileImage);
 

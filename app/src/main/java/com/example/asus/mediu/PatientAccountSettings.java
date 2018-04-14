@@ -17,6 +17,8 @@ public class PatientAccountSettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_account_settings);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Account Setings");
+
 
         openprofile=(TextView)findViewById(R.id.action_profile);
         changepassword = (TextView)findViewById(R.id.action_changepassword);

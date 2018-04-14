@@ -26,7 +26,8 @@ public class UsersList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users_list);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Doctors");
 
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Doctor_Users");
 

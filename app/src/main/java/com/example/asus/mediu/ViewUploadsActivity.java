@@ -45,6 +45,9 @@ public class ViewUploadsActivity extends AppCompatActivity {
         mCurrent_user= FirebaseAuth.getInstance().getCurrentUser();
         uploadList = new ArrayList<>();
         listView = (ListView) findViewById(R.id.listView);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Uploads");
+
 
 
         //adding a clicklistener on listview
