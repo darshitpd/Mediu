@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.asus.mediu.UsersList">
+    tools:context="com.example.asus.mediu.User_List_Pincode">
+
+
+
 
     <TextView
         android:id="@+id/heading_label"
@@ -14,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
-        android:text="Search using specialization"
+        android:text="Search using pincode"
         android:textColor="#555555"
         android:textSize="24sp" />
     <EditText
@@ -56,4 +59,6 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/search_field"
         ></android.support.v7.widget.RecyclerView>
+
+
 </RelativeLayout>

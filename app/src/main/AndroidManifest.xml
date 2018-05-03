@@ -55,7 +55,6 @@
         <activity
             android:name=".LabTest"
             android:parentActivityName=".MyHealth" />
-
         <activity
             android:name=".UsersList"
             android:parentActivityName=".patient_connect_doctor" />
@@ -64,10 +63,10 @@
             android:parentActivityName=".UsersList" />
         <activity
             android:name=".ConnectedDoctorList"
-            android:parentActivityName=".patient_connect_doctor"  />
+            android:parentActivityName=".patient_connect_doctor" />
         <activity
             android:name=".ConnectedDoctorProfile"
-            android:parentActivityName=".ConnectedDoctorList"  />
+            android:parentActivityName=".ConnectedDoctorList" />
         <activity
             android:name=".Chat"
             android:parentActivityName=".ConnectedDoctorList" />
@@ -86,10 +85,14 @@
         </activity>
         <activity
             android:name=".ViewUploadsActivity"
-            android:parentActivityName=".Documents"/>
+            android:parentActivityName=".Documents" />
         <activity
             android:name=".patient_connect_doctor"
             android:parentActivityName=".PatientHome" />
+        <activity
+            android:name=".User_List_Pincode"
+            android:parentActivityName=".patient_connect_doctor"
+            />
     </application>
 
 </manifest>

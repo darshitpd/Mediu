@@ -1,10 +1,9 @@
 package com.example.asus.mediu;
 
-
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -21,7 +20,8 @@ import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class UsersList extends AppCompatActivity {
+public class User_List_Pincode extends AppCompatActivity {
+
 
     private EditText mSearchField;
     private ImageButton mSearchBtn;
@@ -30,10 +30,13 @@ public class UsersList extends AppCompatActivity {
     private RecyclerView mUsersList;
     private DatabaseReference mUsersDatabase;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_users_list);
+        setContentView(R.layout.activity_user__list__pincode);
+
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Doctors");
 
@@ -59,20 +62,21 @@ public class UsersList extends AppCompatActivity {
 
     }
 
+
     private void firebaseUserSearch(String searchText) {
 
-        Toast.makeText(UsersList.this, "Started Search", Toast.LENGTH_LONG).show();
+        Toast.makeText(User_List_Pincode.this, "Started Search", Toast.LENGTH_LONG).show();
 
-        Query firebaseSearchQuery = mUsersDatabase.orderByChild("specialist").startAt(searchText).endAt(searchText + "\uf8ff");
+        Query firebaseSearchQuery = mUsersDatabase.orderByChild("pincode").startAt(searchText).endAt(searchText + "\uf8ff");
 
-        FirebaseRecyclerAdapter<UserSingle, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<UserSingle, UsersViewHolder>(
-                UserSingle.class, R.layout.activity_user_list_single, UsersViewHolder.class,firebaseSearchQuery
+        FirebaseRecyclerAdapter<UserSingle, UsersList.UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<UserSingle, UsersList.UsersViewHolder>(
+                UserSingle.class, R.layout.activity_user_list_single, UsersList.UsersViewHolder.class,firebaseSearchQuery
         ) {
             @Override
-            protected void populateViewHolder(UsersViewHolder usersViewHolder, UserSingle users, int i) {
+            protected void populateViewHolder(UsersList.UsersViewHolder usersViewHolder, UserSingle users, int i) {
 
 
-                usersViewHolder.setSpecialization(users.getSpecialist());
+                usersViewHolder.setSpecialization(users.getPincode());
                 usersViewHolder.setDisplayName(users.getName());
                 usersViewHolder.setLastName(users.getLastname());
                 usersViewHolder.setUserImage(users.getThumb_image(), getApplicationContext());
@@ -84,16 +88,17 @@ public class UsersList extends AppCompatActivity {
         mUsersList.setAdapter(firebaseRecyclerAdapter);
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerAdapter<UserSingle, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<UserSingle, UsersViewHolder>(
-                UserSingle.class, R.layout.activity_user_list_single, UsersViewHolder.class, mUsersDatabase
+        FirebaseRecyclerAdapter<UserSingle, UsersList.UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<UserSingle, UsersList.UsersViewHolder>(
+                UserSingle.class, R.layout.activity_user_list_single, UsersList.UsersViewHolder.class, mUsersDatabase
         ) {
             @Override
-            protected void populateViewHolder(UsersViewHolder usersViewHolder, UserSingle users, int i) {
+            protected void populateViewHolder(UsersList.UsersViewHolder usersViewHolder, UserSingle users, int i) {
 
-                usersViewHolder.setSpecialization(users.getSpecialist());
+                usersViewHolder.setSpecialization(users.getPincode());
                 usersViewHolder.setDisplayName(users.getName());
                 usersViewHolder.setLastName(users.getLastname());
                 usersViewHolder.setUserImage(users.getThumb_image(), getApplicationContext());
@@ -104,7 +109,7 @@ public class UsersList extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        Intent profileIntent = new Intent(UsersList.this, ProfileActivity.class);
+                        Intent profileIntent = new Intent(User_List_Pincode.this, ProfileActivity.class);
                         profileIntent.putExtra("user_id", user_id);
                         startActivity(profileIntent);
                     }
@@ -114,6 +119,8 @@ public class UsersList extends AppCompatActivity {
         };
         mUsersList.setAdapter(firebaseRecyclerAdapter);
     }
+
+
 
     public static class UsersViewHolder extends RecyclerView.ViewHolder {
 
@@ -158,4 +165,9 @@ public class UsersList extends AppCompatActivity {
         }
 
     }
+
+
+
+
+
 }

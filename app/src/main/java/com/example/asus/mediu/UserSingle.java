@@ -10,11 +10,24 @@ public class UserSingle {
     public String image;
     public String lastname;
     public String thumbnail;
-
+    public String specialist;
+    public String pincode;
 
 
     public UserSingle(){
 
+    }
+
+    public UserSingle(String specialist) {
+        this.specialist = specialist;
+    }
+
+    public String getPincode() {
+        return pincode;
+    }
+
+    public void setPincode(String pincode) {
+        this.pincode = pincode;
     }
 
     public UserSingle(String firstname, String image, String lastname, String thumbnail) {
@@ -54,6 +67,15 @@ public class UserSingle {
 
     public void setThumb_image(String thumb_image) {
         this.thumbnail = thumbnail;
+    }
+
+
+    public String getSpecialist() {
+        return specialist;
+    }
+
+    public void setSpecialist(String specialist) {
+        this.specialist = specialist;
     }
 
 }
