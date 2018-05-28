@@ -1,5 +1,6 @@
 package com.example.asus.mediu;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,7 +25,8 @@ public class ConnectedDoctorProfile extends AppCompatActivity {
 
     private ImageView mProfileImage;
     private TextView mProfileName,mSpecialization,mExp,mClinicAddress;
-    private Button mProfileDeclineReqBtn;
+    private Button mProfileDeclineReqBtn, mProfileMakeAppointment;
+    private String docName;
 
     private DatabaseReference mUsersDatabase;
     private DatabaseReference mConnectDatabase;
@@ -51,6 +53,7 @@ public class ConnectedDoctorProfile extends AppCompatActivity {
         mExp  = (TextView)findViewById(R.id.profile_exp);
         mClinicAddress = (TextView)findViewById(R.id.profile_clinc_address);
         mProfileDeclineReqBtn=(Button)findViewById(R.id.profile_decline_req_btn);
+        mProfileMakeAppointment=(Button)findViewById(R.id.profile_make_appointment);
 
         mCurrent_state= 3;
         mUsersDatabase.addValueEventListener(new ValueEventListener() {
@@ -59,6 +62,7 @@ public class ConnectedDoctorProfile extends AppCompatActivity {
                 String firstname = dataSnapshot.child("firstname").getValue().toString();
                 String lastname = dataSnapshot.child("lastname").getValue().toString();
                 String display_name = firstname+" "+lastname;
+                docName = display_name;
                 String image = dataSnapshot.child("image").getValue().toString();
 
                 String specialization = dataSnapshot.child("specialist").getValue().toString();
@@ -105,5 +109,15 @@ public class ConnectedDoctorProfile extends AppCompatActivity {
                 });
             }
         });
+        mProfileMakeAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), MakeAppointmentActivity.class);
+                intent.putExtra("EXTRA_DOCTOR_ID", user_id);
+                intent.putExtra("EXTRA_DOCTOR_NAME", docName);
+                startActivity(intent);
+            }
+        })
+        ;
     }
 }

@@ -91,8 +91,8 @@
             android:parentActivityName=".PatientHome" />
         <activity
             android:name=".User_List_Pincode"
-            android:parentActivityName=".patient_connect_doctor"
-            />
+            android:parentActivityName=".patient_connect_doctor" />
+        <activity android:name=".MakeAppointmentActivity"></activity>
     </application>
 
 </manifest>
