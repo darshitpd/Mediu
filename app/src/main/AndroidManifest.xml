@@ -95,7 +95,11 @@
         <activity android:name=".MakeAppointmentActivity" />
         <activity android:name=".appointmentActivity" />
         <activity android:name=".RequestedAptListActivity" />
-        <activity android:name=".ConfirmedAptListActivity"></activity>
+        <activity android:name=".ConfirmAptListActivity" />
+        <activity android:name=".SingleRequestAppointment" />
+        <activity android:name=".SingleConfirmAppointment" />
+        <activity android:name=".DeclinedAptListActivity" />
+        <activity android:name=".SingleDeclineAppointment"></activity>
     </application>
 
 </manifest>

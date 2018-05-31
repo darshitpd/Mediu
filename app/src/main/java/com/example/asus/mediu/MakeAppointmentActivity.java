@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Calendar;
 
 public class MakeAppointmentActivity extends AppCompatActivity {
-    private DatabaseReference mDatabase,mPatientDatabase, mDoctorDatabase;
+    private DatabaseReference mDatabase,mDatabase1, mPatientDatabase, mDoctorDatabase;
     private FirebaseUser mCurrentUser;
     private TextView selectDate, selectTime;
     private EditText reason;
@@ -48,6 +48,7 @@ public class MakeAppointmentActivity extends AppCompatActivity {
         final String current_uid = mCurrentUser.getUid();
         mPatientDatabase = FirebaseDatabase.getInstance().getReference().child("Patient_Users").child(current_uid);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Patient_Users").child(current_uid).child("Appointments").child("Request");
+        mDatabase1 = FirebaseDatabase.getInstance().getReference().child("Appointments");
         mDoctorDatabase = FirebaseDatabase.getInstance().getReference().child("Doctor_Users").child(doctor_id).child("Appointments").child("Request");
 
         selectDate= (TextView)findViewById(R.id.tvSelectDate);
@@ -129,7 +130,7 @@ public class MakeAppointmentActivity extends AppCompatActivity {
                 String aptDate = selectDate.getText().toString();
                 String aptTime = selectTime.getText().toString();
 
-                if(aptDate==null || aptReason==null ||aptTime==null || aptDate.equals("Select a date") || aptTime.equals("Select Time")){
+                if( aptReason==null || aptDate.equals("Select a date") || aptTime.equals("Select Time")){
                     Toast.makeText(MakeAppointmentActivity.this, "Please fill all the details", Toast.LENGTH_SHORT).show();
                 }else {
                     final DatabaseReference newApt = mDatabase.push();
@@ -139,12 +140,26 @@ public class MakeAppointmentActivity extends AppCompatActivity {
                     newApt.child("time").setValue(aptTime);
                     newApt.child("doctor_id").setValue(doctor_id);
                     newApt.child("doctor_name").setValue(doctorName);
+                    newApt.child("status").setValue("request");
+
+
 
                     mDoctorDatabase.child(newApt.getKey()).child("reason").setValue(aptReason);
                     mDoctorDatabase.child(newApt.getKey()).child("date").setValue(aptDate);
                     mDoctorDatabase.child(newApt.getKey()).child("time").setValue(aptTime);
                     mDoctorDatabase.child(newApt.getKey()).child("patient_id").setValue(current_uid);
                     mDoctorDatabase.child(newApt.getKey()).child("patient_name").setValue(patientName);
+                    mDoctorDatabase.child(newApt.getKey()).child("status").setValue("request");
+
+
+                    mDatabase1.child(newApt.getKey()).child("reason").setValue(aptReason);
+                    mDatabase1.child(newApt.getKey()).child("date").setValue(aptDate);
+                    mDatabase1.child(newApt.getKey()).child("time").setValue(aptTime);
+                    mDatabase1.child(newApt.getKey()).child("patient_id").setValue(current_uid);
+                    mDatabase1.child(newApt.getKey()).child("patient_name").setValue(patientName);
+                    mDatabase1.child(newApt.getKey()).child("status").setValue("request");
+                    mDatabase1.child(newApt.getKey()).child("doctor_id").setValue(doctor_id);
+                    mDatabase1.child(newApt.getKey()).child("doctor_name").setValue(doctorName);
 
                     Toast.makeText(MakeAppointmentActivity.this, "Appointment request is sent to the doctor", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), PatientHome.class));
