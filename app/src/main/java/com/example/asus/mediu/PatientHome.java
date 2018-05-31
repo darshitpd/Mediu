@@ -76,7 +76,7 @@ public class PatientHome extends AppCompatActivity {
 
     }
     public void appointments(View view) {
-        Intent intent = new Intent(this, Appointments.class);
+        Intent intent = new Intent(this, appointmentActivity.class);
         startActivity(intent);    }
 
     public void healthfeed(View view) {

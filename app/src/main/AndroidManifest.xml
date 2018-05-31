@@ -92,7 +92,10 @@
         <activity
             android:name=".User_List_Pincode"
             android:parentActivityName=".patient_connect_doctor" />
-        <activity android:name=".MakeAppointmentActivity"></activity>
+        <activity android:name=".MakeAppointmentActivity" />
+        <activity android:name=".appointmentActivity" />
+        <activity android:name=".RequestedAptListActivity" />
+        <activity android:name=".ConfirmedAptListActivity"></activity>
     </application>
 
 </manifest>
