@@ -3,6 +3,7 @@ package com.example.asus.mediu;
 import android.accessibilityservice.GestureDescription;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.DialogFragment;
@@ -14,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,7 +47,7 @@ public class MakeAppointmentActivity extends AppCompatActivity {
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         final String current_uid = mCurrentUser.getUid();
         mPatientDatabase = FirebaseDatabase.getInstance().getReference().child("Patient_Users").child(current_uid);
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Patient_Users").child(current_uid).child("Appointments");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Patient_Users").child(current_uid).child("Appointments").child("Request");
         mDoctorDatabase = FirebaseDatabase.getInstance().getReference().child("Doctor_Users").child(doctor_id).child("Appointments").child("Request");
 
         selectDate= (TextView)findViewById(R.id.tvSelectDate);
@@ -126,29 +128,27 @@ public class MakeAppointmentActivity extends AppCompatActivity {
                 String aptReason= reason.getEditableText().toString();
                 String aptDate = selectDate.getText().toString();
                 String aptTime = selectTime.getText().toString();
-                final DatabaseReference newApt=mDatabase.push();
 
-                newApt.child("reason").setValue(aptReason);
-                newApt.child("date").setValue(aptDate);
-                newApt.child("time").setValue(aptTime);
-                newApt.child("doctor_id").setValue(doctor_id);
-                newApt.child("doctor_name").setValue(doctorName);
+                if(aptDate==null || aptReason==null ||aptTime==null || aptDate.equals("Select a date") || aptTime.equals("Select Time")){
+                    Toast.makeText(MakeAppointmentActivity.this, "Please fill all the details", Toast.LENGTH_SHORT).show();
+                }else {
+                    final DatabaseReference newApt = mDatabase.push();
 
-                mDoctorDatabase.child(newApt.getKey()).child("reason").setValue(aptReason);
-                mDoctorDatabase.child(newApt.getKey()).child("date").setValue(aptDate);
-                mDoctorDatabase.child(newApt.getKey()).child("time").setValue(aptTime);
-                mDoctorDatabase.child(newApt.getKey()).child("patient_id").setValue(current_uid);
-                mDoctorDatabase.child(newApt.getKey()).child("patient_name").setValue(patientName);
+                    newApt.child("reason").setValue(aptReason);
+                    newApt.child("date").setValue(aptDate);
+                    newApt.child("time").setValue(aptTime);
+                    newApt.child("doctor_id").setValue(doctor_id);
+                    newApt.child("doctor_name").setValue(doctorName);
 
-//                final DatabaseReference newReqApt= mDoctorDatabase.push();
+                    mDoctorDatabase.child(newApt.getKey()).child("reason").setValue(aptReason);
+                    mDoctorDatabase.child(newApt.getKey()).child("date").setValue(aptDate);
+                    mDoctorDatabase.child(newApt.getKey()).child("time").setValue(aptTime);
+                    mDoctorDatabase.child(newApt.getKey()).child("patient_id").setValue(current_uid);
+                    mDoctorDatabase.child(newApt.getKey()).child("patient_name").setValue(patientName);
 
-//                mUserDatabase.child("Appointments").child("Apt 1").child("reason").setValue(aptReason);
-//                mUserDatabase.child("Appointments").child("Apt 1").child("date").setValue(aptDate);
-//                mUserDatabase.child("Appointments").child("Apt 1").child("time").setValue(aptTime);
-//                mUserDatabase.child("Appointments").child("Apt 1").child("doctor_id").setValue(doctor_id);
-//                mUserDatabase.child("Appointments").child("Apt 1").child("doctor_name").setValue(doctorName);
-
-
+                    Toast.makeText(MakeAppointmentActivity.this, "Appointment request is sent to the doctor", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), PatientHome.class));
+                }
             }
         });
     }

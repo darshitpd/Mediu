@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#131320"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
     tools:context="com.example.asus.mediu.ConnectedDoctorProfile">
     <ImageView
         android:id="@+id/profile_image"
@@ -61,25 +64,26 @@
         android:textColor="@android:color/white"
         android:textSize="24sp" />
 
-
     <Button
         android:id="@+id/profile_make_appointment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/profile_clinc_address"
-        android:layout_below="@+id/profile_clinc_address"
-        android:layout_marginTop="13dp"
+        android:layout_above="@+id/profile_decline_req_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/colorAccent"
         android:text="Make Appointment"
         android:textColor="@android:color/white" />
+
     <Button
         android:id="@+id/profile_decline_req_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profile_clinc_address"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="62dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/profile_exp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginStart="10dp"
         android:backgroundTint="@color/colorAccent"
         android:text="DECLINE CONNECT REQUEST"
         android:textColor="@android:color/white" />
-</RelativeLayout>
+</LinearLayout>

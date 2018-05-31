@@ -78,9 +78,9 @@
             <!--fetch data and put it next to welcome-->
             <TextView
                 android:id="@+id/welcome"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+
                 android:text="@string/welcome"
                 android:textColor="#039953"
                 android:textSize="35sp"
@@ -88,9 +88,9 @@
 
             <TextView
                 android:id="@+id/firstname"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+
                 android:textColor="#039953"
                 android:textSize="35sp"
                 android:textStyle="bold" />
