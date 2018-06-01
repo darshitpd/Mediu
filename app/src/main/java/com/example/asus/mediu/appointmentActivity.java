@@ -26,4 +26,9 @@ public class appointmentActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DeclinedAptListActivity.class);
         startActivity(intent);    }
 
+    public void openRescheduledAptList(View view) {
+        Intent intent = new Intent(this, RescheduledAptListActivity.class);
+        startActivity(intent);    }
+
+
 }

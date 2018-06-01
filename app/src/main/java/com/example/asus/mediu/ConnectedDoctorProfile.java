@@ -24,7 +24,7 @@ import com.squareup.picasso.Picasso;
 public class ConnectedDoctorProfile extends AppCompatActivity {
 
     private ImageView mProfileImage;
-    private TextView mProfileName,mSpecialization,mExp,mClinicAddress;
+    private TextView mProfileName,mSpecialization,mExp,mClinicAddress, mDescription, mWorkingTime;
     private Button mProfileDeclineReqBtn, mProfileMakeAppointment;
     private String docName;
 
@@ -52,6 +52,8 @@ public class ConnectedDoctorProfile extends AppCompatActivity {
         mSpecialization = (TextView)findViewById(R.id.profile_specialization);
         mExp  = (TextView)findViewById(R.id.profile_exp);
         mClinicAddress = (TextView)findViewById(R.id.profile_clinc_address);
+        mDescription = (TextView)findViewById(R.id.profile_description);
+        mWorkingTime =(TextView)findViewById(R.id.profile_working_time);
         mProfileDeclineReqBtn=(Button)findViewById(R.id.profile_decline_req_btn);
         mProfileMakeAppointment=(Button)findViewById(R.id.profile_make_appointment);
 
@@ -68,12 +70,16 @@ public class ConnectedDoctorProfile extends AppCompatActivity {
                 String specialization = dataSnapshot.child("specialist").getValue().toString();
                 String exp = dataSnapshot.child("experience").getValue().toString();
                 String clinicAddress = dataSnapshot.child("address").getValue().toString();
+                String description = dataSnapshot.child("description").getValue().toString();
+                String workingTime = dataSnapshot.child("working").getValue().toString();
 
                 mProfileName.setText(display_name);
 
                 mSpecialization.setText(specialization);
                 mExp.setText(exp);
                 mClinicAddress.setText(clinicAddress);
+                mDescription.setText(description);
+                mWorkingTime.setText(workingTime);
 
                 Picasso.with(ConnectedDoctorProfile.this).load(image).placeholder(R.drawable.default_avatar).into(mProfileImage);
             }

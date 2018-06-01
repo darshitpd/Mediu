@@ -99,7 +99,9 @@
         <activity android:name=".SingleRequestAppointment" />
         <activity android:name=".SingleConfirmAppointment" />
         <activity android:name=".DeclinedAptListActivity" />
-        <activity android:name=".SingleDeclineAppointment"></activity>
+        <activity android:name=".SingleDeclineAppointment" />
+        <activity android:name=".RescheduledAptListActivity" />
+        <activity android:name=".SingleRescheduleAppointment"></activity>
     </application>
 
 </manifest>

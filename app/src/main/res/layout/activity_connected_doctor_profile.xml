@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#131320"
     android:orientation="vertical"
-    android:layout_gravity="center"
-    android:gravity="center"
     tools:context="com.example.asus.mediu.ConnectedDoctorProfile">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <ImageView
         android:id="@+id/profile_image"
         android:layout_width="match_parent"
@@ -25,45 +27,103 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/profile_image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
         android:text="Display Name"
+        android:layout_gravity="center"
         android:textColor="@android:color/white"
         android:textSize="24sp" />
+    <TextView
+        android:id="@+id/profile_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Specialization: "
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp"/>
     <TextView
         android:id="@+id/profile_specialization"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/profile_displayName"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
         android:text="Specialization"
         android:textColor="@android:color/white"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
+    </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/profile_exp"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profile_specialization"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:text="Years of Experience"
-        android:textColor="@android:color/white"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/profile_clinc_address"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Years of Experience: "
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"/>
+        <TextView
+            android:id="@+id/profile_exp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_specialization"
+            android:layout_centerHorizontal="true"
+            android:text="Years of Experience"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profile_exp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:text="Clinic Address"
-        android:textColor="@android:color/white"
-        android:textSize="24sp" />
-
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clinic Address: "
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            />
+        <TextView
+            android:id="@+id/profile_clinc_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_exp"
+            android:layout_centerHorizontal="true"
+            android:text="Clinic Address"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Working Time: "
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            />
+        <TextView
+            android:id="@+id/profile_working_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Time"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
     <Button
         android:id="@+id/profile_make_appointment"
         android:layout_width="wrap_content"
@@ -72,6 +132,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/colorAccent"
+        android:layout_gravity="center"
         android:text="Make Appointment"
         android:textColor="@android:color/white" />
 
@@ -81,9 +142,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/profile_exp"
+        android:layout_gravity="center"
         android:layout_marginBottom="25dp"
-        android:layout_marginStart="10dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="DECLINE CONNECT REQUEST"
+        android:text="Remove Connection"
         android:textColor="@android:color/white" />
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
