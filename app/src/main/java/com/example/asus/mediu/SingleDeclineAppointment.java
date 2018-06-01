@@ -26,6 +26,7 @@ public class SingleDeclineAppointment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_decline_appointment);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         apt_id = getIntent().getStringExtra("apt_id");
         mReason= (TextView)findViewById(R.id.tvReason);

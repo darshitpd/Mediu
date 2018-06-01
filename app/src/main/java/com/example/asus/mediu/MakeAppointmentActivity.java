@@ -41,6 +41,7 @@ public class MakeAppointmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_appointment);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final String doctor_id = getIntent().getStringExtra("EXTRA_DOCTOR_ID");
         final String doctorName = getIntent().getStringExtra("EXTRA_DOCTOR_NAME");

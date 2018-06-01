@@ -22,6 +22,7 @@ public class ConfirmAptListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_apt_list);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mCurrent_user= FirebaseAuth.getInstance().getCurrentUser();
         mPatientUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Patient_Users").child(mCurrent_user.getUid()).child("Appointments").child("Confirm");
