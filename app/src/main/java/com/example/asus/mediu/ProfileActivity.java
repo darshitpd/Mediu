@@ -1,6 +1,5 @@
 package com.example.asus.mediu;
 
-import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -30,8 +29,8 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     private ImageView mProfileImage;
-    private TextView mProfileName, mSpecialization,mExp,mClinicAddress;
-    private Button mProfileSendReqBtn , mViewCertificate;
+    private TextView mProfileName, mSpecialization,mExp,mClinicAddress,mDescription ;
+    private Button mProfileSendReqBtn;
 
     private DatabaseReference mUsersDatabase;
     private DatabaseReference mUsersInfoDatabase;
@@ -65,7 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
         mExp  = (TextView)findViewById(R.id.profile_exp);
         mClinicAddress = (TextView)findViewById(R.id.profile_clinc_address);
         mProfileSendReqBtn = (Button) findViewById(R.id.profile_send_req_btn);
-        mViewCertificate = (Button) findViewById(R.id.view_certificate);
+        mDescription= (TextView)findViewById(R.id.profile_description);
         mCurrent_state = 0;
 
         mUsersDatabase.addValueEventListener(new ValueEventListener() {
@@ -78,12 +77,14 @@ public class ProfileActivity extends AppCompatActivity {
                 String exp = dataSnapshot.child("experience").getValue().toString();
                 String clinicAddress = dataSnapshot.child("address").getValue().toString();
                 String image = dataSnapshot.child("image").getValue().toString();
+                String description= dataSnapshot.child("description").getValue().toString();
 
                 mProfileName.setText(display_name);
 
                 mSpecialization.setText(specialization);
                 mExp.setText(exp);
                 mClinicAddress.setText(clinicAddress);
+                mDescription.setText(description);
 
                 Picasso.with(ProfileActivity.this).load(image).placeholder(R.drawable.default_avatar).into(mProfileImage);
 
@@ -218,19 +219,6 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
-
-        mViewCertificate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent profileIntent = new Intent(ProfileActivity.this, Doctor_Certificate.class);
-                profileIntent.putExtra("user_id", user_id);
-                startActivity(profileIntent);
-            }
-        });
-
-
-
-
 
     }
 }
