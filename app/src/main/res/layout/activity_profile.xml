@@ -62,15 +62,26 @@
         android:textColor="@android:color/white"
         android:textSize="24sp" />
 
+    <Button
+        android:id="@+id/view_certificate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_clinc_address"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="View Certificate"
+        android:textColor="@android:color/white" />
+
 
 
     <Button
         android:id="@+id/profile_send_req_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profile_clinc_address"
+        android:layout_below="@+id/view_certificate"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="115dp"
+        android:layout_marginTop="15dp"
         android:backgroundTint="@color/colorAccent"
         android:text="SEND CONNECT REQUEST"
         android:textColor="@android:color/white" />

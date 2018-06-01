@@ -1,5 +1,6 @@
 package com.example.asus.mediu;
 
+import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private ImageView mProfileImage;
     private TextView mProfileName, mSpecialization,mExp,mClinicAddress;
-    private Button mProfileSendReqBtn;
+    private Button mProfileSendReqBtn , mViewCertificate;
 
     private DatabaseReference mUsersDatabase;
     private DatabaseReference mUsersInfoDatabase;
@@ -64,6 +65,7 @@ public class ProfileActivity extends AppCompatActivity {
         mExp  = (TextView)findViewById(R.id.profile_exp);
         mClinicAddress = (TextView)findViewById(R.id.profile_clinc_address);
         mProfileSendReqBtn = (Button) findViewById(R.id.profile_send_req_btn);
+        mViewCertificate = (Button) findViewById(R.id.view_certificate);
         mCurrent_state = 0;
 
         mUsersDatabase.addValueEventListener(new ValueEventListener() {
@@ -216,6 +218,19 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+
+        mViewCertificate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent profileIntent = new Intent(ProfileActivity.this, Doctor_Certificate.class);
+                profileIntent.putExtra("user_id", user_id);
+                startActivity(profileIntent);
+            }
+        });
+
+
+
+
 
     }
 }

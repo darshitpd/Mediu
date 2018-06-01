@@ -101,7 +101,8 @@
         <activity android:name=".DeclinedAptListActivity" />
         <activity android:name=".SingleDeclineAppointment" />
         <activity android:name=".RescheduledAptListActivity" />
-        <activity android:name=".SingleRescheduleAppointment"></activity>
+        <activity android:name=".SingleRescheduleAppointment" />
+        <activity android:name=".Doctor_Certificate"></activity>
     </application>
 
 </manifest>

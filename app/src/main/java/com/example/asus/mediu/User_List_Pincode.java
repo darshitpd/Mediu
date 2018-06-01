@@ -82,6 +82,19 @@ public class User_List_Pincode extends AppCompatActivity {
                 usersViewHolder.setUserImage(users.getThumb_image(), getApplicationContext());
 
 
+                final String user_id = getRef(i).getKey();
+
+                usersViewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent profileIntent = new Intent(User_List_Pincode.this, ProfileActivity.class);
+                        profileIntent.putExtra("user_id", user_id);
+                        startActivity(profileIntent);
+                    }
+                });
+
+
             }
         };
 
