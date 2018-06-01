@@ -212,6 +212,7 @@ public class PatientProfile extends AppCompatActivity {
                             }
                         }
                     });
+                    startActivity(new Intent(PatientProfile.this, PatientHome.class));
                 }
                 else {
                     Toast.makeText(PatientProfile.this, "Please fill up all the details", Toast.LENGTH_SHORT).show();
