@@ -92,17 +92,50 @@
         <activity
             android:name=".User_List_Pincode"
             android:parentActivityName=".patient_connect_doctor" />
-        <activity android:name=".MakeAppointmentActivity" />
-        <activity android:name=".appointmentActivity" />
-        <activity android:name=".RequestedAptListActivity" />
-        <activity android:name=".ConfirmAptListActivity" />
-        <activity android:name=".SingleRequestAppointment" />
-        <activity android:name=".SingleConfirmAppointment" />
-        <activity android:name=".DeclinedAptListActivity" />
-        <activity android:name=".SingleDeclineAppointment" />
-        <activity android:name=".RescheduledAptListActivity" />
-        <activity android:name=".SingleRescheduleAppointment" />
-        <activity android:name=".Doctor_Certificate"></activity>
+
+
+        <activity
+            android:name=".MakeAppointmentActivity"
+            android:parentActivityName=".ConnectedDoctorProfile"/>
+
+        <activity
+            android:name=".appointmentActivity"
+            android:parentActivityName=".PatientHome"/>
+
+        <activity
+            android:name=".RequestedAptListActivity"
+            android:parentActivityName=".appointmentActivity"/>
+
+        <activity
+            android:name=".ConfirmAptListActivity"
+            android:parentActivityName=".appointmentActivity"/>
+
+        <activity
+            android:name=".SingleRequestAppointment"
+            android:parentActivityName=".RequestedAptListActivity"/>
+
+        <activity
+            android:name=".SingleConfirmAppointment"
+            android:parentActivityName=".ConfirmAptListActivity"/>
+
+        <activity
+            android:name=".DeclinedAptListActivity"
+            android:parentActivityName=".appointmentActivity"/>
+
+        <activity
+            android:name=".SingleDeclineAppointment"
+            android:parentActivityName=".DeclinedAptListActivity"/>
+
+        <activity
+            android:name=".RescheduledAptListActivity"
+            android:parentActivityName=".appointmentActivity"/>
+
+        <activity
+            android:name=".SingleRescheduleAppointment"
+            android:parentActivityName=".RescheduledAptListActivity"/>
+        <activity
+            android:name=".Doctor_Certificate"
+            android:parentActivityName=".ProfileActivity" />
     </application>
 
 </manifest>
