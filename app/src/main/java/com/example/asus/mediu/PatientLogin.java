@@ -82,9 +82,11 @@ public class PatientLogin extends AppCompatActivity {
 // the auth state listener will be notified and logic to handle the
 // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
+                            mProgressDialog.dismiss();
                             Toast.makeText(PatientLogin.this, "Wrong email or password", Toast.LENGTH_SHORT).show();
                         }
                         else {
+                            mProgressDialog.dismiss();
                             Intent i = new Intent(PatientLogin.this, PatientHome.class);
                             finish();
                             startActivity(i);
