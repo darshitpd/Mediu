@@ -104,15 +104,27 @@
                 android:textSize="20sp" />
         </LinearLayout>
 
-    <Button
+        <Button
+            android:id="@+id/doctor_certificate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_clinc_address"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorAccent"
+            android:text="View Certificate"
+            android:textColor="@android:color/white" />
+
+        <Button
         android:id="@+id/profile_send_req_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profile_clinc_address"
+        android:layout_below="@+id/doctor_certificate"
         android:layout_gravity="center"
         android:backgroundTint="@color/colorAccent"
         android:text="SEND CONNECT REQUEST"
         android:textColor="@android:color/white" />
+
+
     </LinearLayout>
 
 </ScrollView>
